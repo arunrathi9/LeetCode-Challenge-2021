@@ -30,10 +30,10 @@ class Solution:
         return count
 
     # method 2
-    def lambda_(self, num):
+    def numberOfSteps2(self, num):
         return bin(num).count('1') + len(bin(num)) - 3
 
 
 sol = Solution()
 print(sol.numberOfSteps(14))
-print(sol.lambda_(14))
+print(sol.numberOfSteps2(14))
