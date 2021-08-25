@@ -33,3 +33,36 @@ def matrix_traversal(matrix):
 
 mat = [[1,2,3], [4,5,6], [7,8,9]]
 print(matrix_traversal(mat))
+
+# method 2
+from math import ceil
+def matrix_traversal(m):
+    left = up = 0
+    down = len(m)
+    right = len(m[0])
+    res = []
+    count = ceil(len(m)/2)
+    while(count>0):
+
+        for i in range(left, right):
+            res.append(m[up][i])
+
+        for j in range(up+1, down):
+            res.append(m[j][right-1])
+
+        if left!=right:
+            for i in range(right-2, left-1, -1):
+                res.append(m[down-1][i])
+
+        if up!=down:
+            for j in range(down-2, up, -1):
+                res.append(m[j][left])
+
+        left += 1; up += 1
+        right -= 1; down -= 1
+        count -= 1
+    return res
+
+m = [[1,2,3,4,17], [5, 6,7,8,18], [9,10,11,12,19], [13,14,15,16,10],[25,24,23,22,21]]
+#m = [[1]]
+print(matrix_traversal(m))
